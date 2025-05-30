@@ -1,0 +1,14 @@
+// MeasureLabelAllROIs
+// This macro will run “measure” on all ROIs in the ROI manager for open image files. ROI defines which
+// channel is used. It will then count the total number of ROIs and label as “objects”. 
+
+roiManager("Show All");
+roiManager("Select All");
+
+// Measure all ROIs
+run("Set Measurements...", "area mean centroid redirect=None decimal=3");
+roiManager("Measure");
+
+// Count ROIs
+n = roiManager("count");
+print("Total number of ROIs: " + n);
